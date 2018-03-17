@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>News_page</title>
+    <meta name="description" content="新闻详情页面">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="icon" href="../../static/img/favicon.ico" type="image/x-icon">
+
+     <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="../../static/css/font-awesome/css/font-awesome.min.css">
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../static/css/style.css" id="theme-styles">
+
+    <!--[if lt IE 9]>
+    <script src="../../static/js/respond.js"></script>
+    <![endif]-->
+
+    
+</head>
+<body>
+    <header>
+        <div class="widewrapper masthead">
+            <div class="container">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                         <a href="{%url 'news:index' %}" id="logo">
+                             <img src="../../static/img/logo.png" alt="clean Blog">
+                         </a>
+                        </div>
+                        <div class="col-md-8">
+                        <a href="{%url 'news:index' %}" id="name">
+                             <img src="../../static/img/name.png" alt="clean Blog">
+                         </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <nav class="pull-right clean-nav">
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav nav-pills navbar-nav">
+                            <li>
+                                <a href="#1">关于</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:contact' %}">联系我们</a>
+                            </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <div id="mobile-nav-toggle" class="pull-right">
+                    <a href="#" data-toggle="collapse" data-target=".clean-nav .navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+
+                <nav class="pull-right clean-nav">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav nav-pills navbar-nav">
+                          
+                            <li>
+                                <a href="{%url 'news:index' %}">首页</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:about' %}">排行榜</a>
+                            </li>
+
+                            <li>
+                                <a href="{%url 'news:school' %}">校园</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:middle_test' %}">中考</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:high_test' %}">高考</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:college_test' %}">考研</a>
+                            </li> 
+                            <li>
+                                <a href="{%url 'news:government' %}">公务员</a>
+                            </li>
+                            <li>
+                                <a href="{%url 'news:english' %}">英语</a>
+                            </li>
+                             <li>
+                                <a href="{%url 'news:abroad' %}">留学</a>
+                            </li> 
+                             <li>
+                                <a href="{%url 'news:international' %}">国际学校</a>
+                            </li> 
+                             <li>
+                                <a href="{%url 'news:MBA' %}">商学院</a>
+                            </li>
+                             <li>
+                                <a href="{%url 'news:immigrant' %}">移民</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>        
+
+            </div>
+        </div>
+
+        <div class="widewrapper subheader">
+            <div class="container">
+                <div class="clean-breadcrumb">
+                    <a href="/search/">新闻</a>
+                    <span class="separator">&#x2F;</span>
+
+                    {% ifequal name "校园" %}
+                    <a href="{%url 'news:school' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "中考" %}
+                    <a href="{%url 'news:middle_test' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "高考" %}
+                    <a href="{%url 'news:high_test' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "考研" %}
+                    <a href="{%url 'news:college_test' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "公务员" %}
+                    <a href="{%url 'news:government' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "英语" %}
+                    <a href="{%url 'news:english' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "留学" %}
+                    <a href="{%url 'news:abroad' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "国际学校" %}
+                    <a href="{%url 'news:international' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "商学院" %}
+                    <a href="{%url 'news:MBA' %}">{{name}}</a>
+                    {% endifequal %}
+                    {% ifequal name "移民" %}
+                    <a href="{%url 'news:immigrant' %}">{{name}}</a>
+                    {% endifequal %}
+
+                </div>
+
+              
+                <div class="clean-searchbox">
+                    <form action="/search/" method="get" accept-charset="utf-8">
+                       
+                        &emsp;&emsp;&emsp;&emsp;
+                        <a href="{%url 'search' %}"><button class="searchbutton" type="submit">
+                            ...搜索新闻<i class="fa fa-search"></i>
+                        </button></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="widewrapper main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    <article class="blog-post">
+                        <div class="text-center article-title">
+                            <h1>{{News.title}}</h1>
+                       </div>
+                        
+                        <div class="body">
+                            <div class="meta text-center">
+                                <i class="fa fa-user"></i> {{News.source}} <i class="fa fa-calendar"></i>{{News.news_time}}<i class="fa fa-hand-o-up"></i><span class="data">{{News.num_click}}</span>
+                            </div>
+                            <pre>
+                                <h3>{{News.content}}</h3>
+                            </pre>
+                            <h4>标签：{{News.news_tag}}</h4>
+                        </div>
+                    </article>
+
+                    <aside class="social-icons clearfix">
+                        <h4><span class="fa fa-share-alt"></span>&emsp;分享 </h4>
+                        <a class="jiathis_button_tsina"><i class="fa fa-weibo"></i></a>
+                        <a class="jiathis_button_qzone"><i class="fa fa-qq"></i></a>
+                        <a class="jiathis_button_renren"><i class="fa fa-renren"></i></a>
+
+                    </aside>
+                    <br>
+                    {% ifequal mark 1 %}
+                        <p class="text-center"><span class="text-danger">warning:已经是最新一篇!</span></p>
+                    {% endifequal %}
+                    {% ifequal mark 2 %}
+                        <p class="text-center"><span class="text-danger">warning:已经是最后一篇！</span></p>
+                    {% endifequal %}
+                <ul class="pager">
+                    <li class="previous"><a href="{%url 'news:previous_page' News.news_id%}"><i class="fa fa-arrow-circle-left"></i>&emsp;上一篇 </a></li>
+                    {% if mark%}
+                         <li class="text-center"><a href="{%url 'news:about'%}">点击这里浏览更多！</a></li>
+                    {% endif%}
+                    <li class="next"><a href="{%url 'news:next_page' News.news_id%}"> 下一篇&emsp;<i class="fa fa-arrow-circle-right"></i></a></li>
+                </ul>
+                </div>
+                <aside class="col-md-4 blog-aside">
+
+                    <div class="aside-widget">
+                        <header>
+                            <h3>{{name}}最新新闻</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list" id="news1">
+                                 {% for news in Newses1 %}
+                                <li><a href="{%url 'news:news_page' news.news_id%}">{{news.title}}</a><span class="label label-info">{{news.num_click}}</span></li>
+                                {% endfor %}
+
+                            </ul>
+                            <ul class="clean-list">
+                             <li class="text-center">
+                                 <a ><i class="fa fa-arrow-up" id="news1-prev"></i></a>
+                                 &emsp;&emsp;
+                                 <a href="{%url 'news:about' %}"><span class="text-danger">更多新闻</span></a>
+                                 &emsp;&emsp;
+                                 <a ><i class="fa fa-arrow-down" id="news1-next"></i></a>
+                             </li>
+                        </ul>
+                        </div>
+                    </div>
+
+                    <div class="aside-widget">
+                        <header>
+                            <h3 >{{name}}热门新闻</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list" id="news2">
+                                {% for news in Newses2 %}
+                                <li><a href="{%url 'news:news_page' news.news_id%}">{{news.title}}</a><span class="label label-info">{{news.num_click}}</span></li>
+                                {% endfor %}
+                            </ul>
+                            <ul class="clean-list">
+                             <li class="text-center">
+                                 <a ><i class="fa fa-arrow-up" id="news2-prev"></i></a>
+                                 &emsp;&emsp;
+                                 <a href="{%url 'news:hit' %}"><span class="text-danger">更多新闻</span></a>
+                                 &emsp;&emsp;
+                                 <a ><i class="fa fa-arrow-down" id="news2-next"></i></a>
+                             </li>
+                        </ul>
+                        </div>
+                    </div>
+
+                    <div class="aside-widget">
+                        <header>
+                            <h3>Tags</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                <li><a href="{%url 'news:school' %}">校园</a></li>
+                                <li><a href="{%url 'news:middle_test' %}">中考</a></li>
+                                <li><a href="{%url 'news:high_test' %}">高考</a></li>
+                                <li><a href="{%url 'news:college_test' %}">考研</a></li>
+                                <li><a href="{%url 'news:english' %}">外语</a></li>
+                                <li><a href="{%url 'news:abroad' %}">留学</a></li>
+                                <li><a href="{%url 'news:government' %}">公务员</a></li>
+                                <li><a href="{%url 'news:MBA' %}">商学院</a></li>
+                                <li><a href="{%url 'news:international' %}">国际学校</a></li>
+                                <li><a href="{%url 'news:immigrant' %}">移民</a></li>
+                                <li><a href="{%url 'news:about' %}">最新</a></li>
+                                <li><a href="{%url 'news:hit' %}">最热</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="widewrapper footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-user"></i><a name="1">About</a></h3>
+
+                        <p>This is a site which can collote education news from other websites</p>
+                        <p>This is a site which can collote education news from other websites</p>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-pencil"></i> Recent News</h3>
+                        <ul class="clean-list">
+                            {% for news in Newses3 %}
+                                <li><a href="{%url 'news:news_page' news.news_id%}">{{news.title}}</a><span class="badge">{{news.num_click}}</span></li>
+                            {% endfor %}
+                            
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 footer-widget">
+                        <h3> <i class="fa fa-envelope"></i><a href="contact.html">Contact Me</a></h3>
+
+                        <p>If you have any problem, you can contact me.</p>
+                        <p>You can send message to me!</p>
+                         <div class="footer-widget-icon">
+                            <i class="fa fa-wechat"></i><i class="fa fa-weibo"></i><i class="fa fa-qq"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="widewrapper copyright">
+                 Copyright 2017 . developed by liulu .
+        </div>
+    </footer>
+
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/modernizr.js"></script>
+    <script src="../../static/js/jquery.newsTicker.js"></script>
+    <script type="text/javascript" src="http://www.139cai.com/public/share.js" charset="utf-8"></script>
+
+    <script>
+        var news1 = $('#news1').newsTicker({
+		row_height:86,
+		max_rows: 4,
+		duration: 3000,
+		prevButton: $('#news1-prev'),
+		nextButton: $('#news1-next')
+	});
+    </script>
+    <script>
+        var news2 = $('#news2').newsTicker({
+		row_height:86,
+		max_rows: 4,
+		duration: 3000,
+		prevButton: $('#news2-prev'),
+		nextButton: $('#news2-next')
+	});
+    </script>
+
+</body>
+</html>

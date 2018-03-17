@@ -1,0 +1,44 @@
+{% extends 'search_base.html' %}
+
+{% block content %}
+
+<form method="get" action=".">
+     <div class="center">
+             <table>
+                  <tr ><th><label class="text-info" for="id_q"><h3>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i class="fa fa-search"></i>新闻搜索：</h3></label>
+                  </th><td><input class="form-control" id="id_q" name="q" type="search" placeholder="search here" /></td>
+                  <td><button class="btn btn-primary text-danger" type="submit" value="Search">
+                            搜索<i class="fa fa-search"></i>
+                 </button></td>
+                  </tr>
+             </table>
+     </div>
+    <br>
+    {% if query %}
+      <div class="list-group" >
+                <a href="#" class="list-group-item active">
+                    <h3 class="list-group-item-heading"><i class="fa fa-search"></i>搜索结果:</h3>
+                </a>
+        {% for result in page.object_list %}
+                <a href="{%url 'news:news_page' result.object.news_id%}" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{result.object.title}}&emsp;&emsp;<span class="label label-info">{{result.object.num_click}}</span></h4>
+                    <p class="list-group-item-text">{{result.object.news_time}}&emsp;&emsp;&emsp;&emsp;<span class="text-info">标签：</span>{{result.object.news_tag}}</p>
+                </a>
+        {% empty %}
+            <p>No results found.</p>
+        {% endfor %}
+       </div>
+
+        {% if page.has_previous or page.has_next %}
+            <div class="text-center">
+                {% if page.has_previous %}  <a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}«  上一页{% if page.has_previous %}</a>{% endif %}
+              |
+                {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %} 下一页  »{% if page.has_next %}</a>{% endif %}
+             <p></p>
+            </div>
+        {% endif %}
+    {% else %}
+        {# Show some example queries to run, maybe query syntax, something else? #}
+    {% endif %}
+</form>
+{% endblock %}
